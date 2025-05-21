@@ -3,11 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" integrity="sha384-tViUnnbYAV00FLIhhi3v/dWt3Jxw4gZQcNoSCxCIFNJVCx7/D55/wXsrNIRANwdD" crossorigin="anonymous">
+    <title>Cenoe web scraper</title>
 </head>
 <body>
+    <header class="container text-center" >
+        <h1>
+            Ceneo web scraper
+        </h1>
+        <h2>
+            {% block title %}
+
+            {% endblock %}
+        </h2>
+
+    </header>
+<section class="container">
+    <div class="row">
+<div class="col-4">
+    <nav>
+        <ul>
+            <li>
+                <a href="{{url_for('index')}}">Strona  Główna</a>
+            </li>
+            <li>
+
+                <a href="{{url_for('display_form')}}">Ekstrakcja opinii</a>
+            </li>
+            <li>
+                <a href="{{url_for('products')}}">LIsta produktów</a>
+            </li>
+            <li>
+                <a href="{{url_for('author')}}">o autorze</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+<div class="col-8">
+
     {% block content %}
 
+{% endblock %}
+</div>    
+</div>
+</section>
+<footer class="container text-center">
+    <p>Mateusz Nowakowski, Uniwersytet Ekonomiczny  w Krakowie</p>
+
+</footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+    {% block script %}
+
     {% endblock %}
+
 </body>
 </html>
+
+

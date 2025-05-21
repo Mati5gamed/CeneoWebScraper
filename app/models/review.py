@@ -38,7 +38,7 @@ class Review:
     def to_dict(self):
         return {{feature}: getattr(self,feature)for feature in self.review_schema.keys()}
     
-    def extract_featers(self, review):
+    def extract_features(self, review):
         for key, value in self.review_schema.items():
             setattr(self,key, extract(review, *value))
         return self

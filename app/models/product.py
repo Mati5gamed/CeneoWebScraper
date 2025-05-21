@@ -13,14 +13,12 @@ class Product:
         self.product_name = product_name
         self.stats = stats
     def __str__(self):
+        nl = "\n\n"
         return f"""productid : {self.product_id}
                 product_name: {self.product_name}
                 stats: {json.dumps(self.stats, indent=4, ensure_ascii=False)}
-                reviews: {"\n\n".join([str(review) for review in self.reviews])}
+                reviews: {nl.join([str(review) for review in self.reviews])}
 
-
-
-            
                 """
    
     def reviews_to_dict(self):
@@ -52,7 +50,7 @@ class Product:
                 print(len(reviews))
                 for review in reviews:
                         single_review = Review()
-                        self.reviews.append(single_review).extract_featers(review).transform()
+                        single_review.extract_features(review).transform()
 
                     
                 try:
@@ -67,8 +65,8 @@ class Product:
     def calculate_stats(self):
         reviews = pd.DataFrame.from_dict(self.reviews_to_dict)
         self.stats["reviews_count"] = reviews.shape[0]
-        self.stats["pros_count"] = reviews.pros.astype(bool).sum()
-        self.stats["cons_count"] = reviews.cons.astype(bool).sum()
+        self.stats["pros_count"] =int(reviews.pros.astype(bool).sum())
+        self.stats["cons_count"] = int(reviews.cons.astype(bool).sum())
         self.stats["pros_cons_count"] =reviews.apply(lambda r: bool(r.pros) and bool(r.cons), axis=1)
         self.stats["avarage_stars"] = round(reviews.stars.mean(),2)
         return self
