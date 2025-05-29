@@ -3,9 +3,9 @@
 Ekstrakcja  opinii
 {% endblock %}
 {% block content %}
-<form action="{{url_for('extract')}}" method="post">
+<form class="form-group" action="{{url_for('extract')}}" method="post">
 <label for="product_id">ID Produktu</label>
-<input type="text" name="product_id" id="product_id">
-<button type="submit">Pobierz opinie</button>
+<input class="form-control" type="text" name="product_id" id="product_id">
+<button class="btn btn-primary" type="submit">Pobierz opinie</button>
 </form>
 {% endblock %}

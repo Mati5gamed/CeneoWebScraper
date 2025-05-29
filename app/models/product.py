@@ -22,7 +22,7 @@ class Product:
                 """
    
     def reviews_to_dict(self):
-        return [review.to_disct() for review in self.reviews]
+        return [review.to_dict() for review in self.reviews]
     def info_to_dict(self):
         return {
             "product_id": self.product_id,
@@ -50,7 +50,7 @@ class Product:
                 print(len(reviews))
                 for review in reviews:
                         single_review = Review()
-                        single_review.extract_features(review).transform()
+                        self.reviews.append(single_review.extract_features(review).transform())
 
                     
                 try:
@@ -63,8 +63,9 @@ class Product:
 
 
     def calculate_stats(self):
-        reviews = pd.DataFrame.from_dict(self.reviews_to_dict)
-        self.stats["reviews_count"] = reviews.shape[0]
+        reviews = pd.DataFrame.from_dict(self.reviews_to_dict())
+        print(reviews)
+        self.stats["reviews_count"] = int(reviews.shape[0])
         self.stats["pros_count"] =int(reviews.pros.astype(bool).sum())
         self.stats["cons_count"] = int(reviews.cons.astype(bool).sum())
         self.stats["pros_cons_count"] =reviews.apply(lambda r: bool(r.pros) and bool(r.cons), axis=1)

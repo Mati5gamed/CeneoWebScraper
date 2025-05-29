@@ -15,8 +15,8 @@ def extract(ancestor,selector= None, atribute = None, many = False):
         except AttributeError:
             return None
     if atribute:
-        try:
-            return ancestor[atribute]
-        except TypeError:
-            return None
+#        try:
+        return ancestor[atribute]
+        # except TypeError:
+        #     return None
     return ancestor.text.strip()
