@@ -3,9 +3,25 @@
 Ekstrakcja  opinii
 {% endblock %}
 {% block content %}
+{% if form.product_id_errors %}
+<div class="alert alert-dnager" role="alert">
+<ul>
+    {% for error in form.product_id.errors %}
+    <li>{% error %}</li>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</ul>
+</div>
+{%end if%}
 <form class="form-group" action="{{url_for('extract')}}" method="post">
-<label for="product_id">ID Produktu</label>
-<input class="form-control" type="text" name="product_id" id="product_id">
-<button class="btn btn-primary" type="submit">Pobierz opinie</button>
+<div class="col-4 text-end">
+
+    {{form.product_id.label}}
+</div>
+<div class="col-4">
+    {{form.product_id}}
+</div>
+<div class="col-4">
+    {{form.submit}}
+</div>
 </form>
 {% endblock %}

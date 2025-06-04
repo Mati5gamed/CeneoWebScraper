@@ -3,5 +3,9 @@
 lista produktów
 {% endblock %}
 {% block content %}
-
+<ul>
+    {% for product in products % }
+    <a type="button" class="btn btn-ceneo" href="{{url_for('product_id',product_id=product.product_id)}}">{{product.product_id}}</a>
+    {% endfor %}
+</ul>
 {% endblock %}
