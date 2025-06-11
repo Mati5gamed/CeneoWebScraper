@@ -7,11 +7,12 @@ Ekstrakcja  opinii
 <div class="alert alert-dnager" role="alert">
 <ul>
     {% for error in form.product_id.errors %}
-    <li>{% error %}</li>
+    <li>{{ error }}</li>
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+{%endfor%}
 </ul>
 </div>
-{%end if%}
+{%endif%}
 <form class="form-group" action="{{url_for('extract')}}" method="post">
 <div class="col-4 text-end">
 

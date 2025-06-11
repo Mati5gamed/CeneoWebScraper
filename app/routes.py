@@ -39,11 +39,14 @@ def author():
     return render_template("author.html")
 @app.route("/products")
 def products():
-    products_files = os.listdir("./app/data/products")
-    products = []
-    for filname in products_files:
-        with open(f"./app/data/products/{filname}","r",encoding="UTF-8") as jf:
-            product = Product(filname.split(".")[0])
-            product.info_from_dict(json.load(jf))
-            products.append(product)
+    if  os.path.exists("./app/data/products"):
+        products_files = os.listdir("./app/data/products")
+        products = []
+        for filname in products_files:
+            with open(f"./app/data/products/{filname}","r",encoding="UTF-8") as jf:
+                product = Product(filname.split(".")[0])
+                product.info_from_dict(json.load(jf))
+                products.append(product)
+    else:
+        return redirect(url_for("index"))
     return render_template("products.html",products)
